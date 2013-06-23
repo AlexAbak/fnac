@@ -1,8 +1,8 @@
-package org.deneblingvo.game.noughtsAndCrosses;
+package org.deneblingvo.game.nac;
 
 public class Position {
 
-	Position(Row row, Col col) {
+	public Position(Row row, Col col) {
 		this.row = row;
 		this.col = col;
     }

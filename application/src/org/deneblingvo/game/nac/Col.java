@@ -1,4 +1,4 @@
-package org.deneblingvo.game.noughtsAndCrosses;
+package org.deneblingvo.game.nac;
 
 public enum Col {
 
@@ -17,5 +17,14 @@ public enum Col {
     public static String getClassName() {
         return Col.class.getName();
     }
+
+	public static Col fromId(int i) {
+		for (Col col : Col.values()) {
+			if (col.getId() == i) {
+				return col;
+			}
+		}
+		throw new IllegalArgumentException();			
+	}
 
 }

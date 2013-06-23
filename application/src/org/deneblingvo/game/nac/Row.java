@@ -1,4 +1,4 @@
-package org.deneblingvo.game.noughtsAndCrosses;
+package org.deneblingvo.game.nac;
 
 public enum Row {
 
@@ -17,5 +17,14 @@ public enum Row {
     public static String getClassName() {
         return Row.class.getName();
     }
+
+	public static Row fromId(int i) {
+		for (Row row : Row.values()) {
+			if (row.getId() == i) {
+				return row;
+			}
+		}
+		throw new IllegalArgumentException(Integer.toString(i));			
+	}
 
 }

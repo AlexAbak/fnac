@@ -1,4 +1,4 @@
-package org.deneblingvo.game.noughtsAndCrosses;
+package org.deneblingvo.game.nac;
 
 public class CellIsFull extends Exception {
 
