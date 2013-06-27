@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MainActivity!</string>
-    <string name="app_name">fnac</string>
+	<string name="hello">Добро пожаловать!</string>
+    <string name="cross">Ход крестиков</string>
+	<string name="nought">Ход ноликов</string>
+	<string name="crosswin">Крестики выиграли</string>
+	<string name="noughtwin">Нолики выиграли</string>
+    <string name="app_name">Крестики - нолики</string>
+	<string name="draw">Ничья</string>
+	<string name="new_game">Новая игра</string>
+	<string name="cell_is_full">Зянято</string>
+	<string name="game_is_end">Игра закончена</string>
 
 </resources>

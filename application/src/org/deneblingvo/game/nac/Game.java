@@ -12,60 +12,44 @@ public class Game {
 	private Step step;
 
 	private Cell getRowOwner(Row row) {
-		Cell owner = Cell.CLEAR;
+		Cell owner = this.ground.getCell(Col.LEFT, row);
 		for (Col col : Col.values()) {
-			if (owner == Cell.CLEAR) {
-				owner = this.ground.getCell(col, row);
-			} else {
-				if (owner != this.ground.getCell(col, row)) {
-					return Cell.CLEAR;
-				}
+			if (owner != this.ground.getCell(col, row)) {
+				return Cell.CLEAR;
 			}
 		}			
 		return owner;
 	}
 
 	private Cell getColOwner(Col col) {
-		Cell owner = Cell.CLEAR;
+		Cell owner = this.ground.getCell(col, Row.TOP);
 		for (Row row : Row.values()) {
-			if (owner == Cell.CLEAR) {
-				owner = this.ground.getCell(col, row);
-			} else {
-				if (owner != this.ground.getCell(col, row)) {
-					return Cell.CLEAR;
-				}
+			if (owner != this.ground.getCell(col, row)) {
+				return Cell.CLEAR;
 			}
 		}			
 		return owner;
 	}
 
 	private Cell getSlashOwner() {
-		Cell owner = Cell.CLEAR;
+		Cell owner = this.ground.getCell(Col.LEFT, Row.TOP);
 		for (int i = -1; i <= 1; i++) {
 			Row row = Row.fromId(i);
 			Col col = Col.fromId(i);
-			if (owner == Cell.CLEAR) {
-				owner = this.ground.getCell(col, row);
-			} else {
-				if (owner != this.ground.getCell(col, row)) {
-					return Cell.CLEAR;
-				}
+			if (owner != this.ground.getCell(col, row)) {
+				return Cell.CLEAR;
 			}
 		}
 		return owner;
 	}
 
 	private Cell getBackSlashOwner() {
-		Cell owner = Cell.CLEAR;
+		Cell owner = this.ground.getCell(Col.LEFT, Row.BOTTOM);
 		for (int i = -1; i <= 1; i++) {
 			Row row = Row.fromId(0-i);
 			Col col = Col.fromId(i);
-			if (owner == Cell.CLEAR) {
-				owner = this.ground.getCell(col, row);
-			} else {
-				if (owner != this.ground.getCell(col, row)) {
-					return Cell.CLEAR;
-				}
+			if (owner != this.ground.getCell(col, row)) {
+				return Cell.CLEAR;
 			}
 		}
 		return owner;
@@ -128,7 +112,19 @@ public class Game {
 			} else {
 				this.step = Step.NOUGHTWIN;
 			}
+		} else {
+			if (this.isFull()) {
+				this.step = Step.DRAW;
+			}
 		}
 	}
 
+	private boolean isFull() {
+		for (int i = 0; i < 9; i++) {
+			if (this.ground.getCell(new Position(i)) == Cell.CLEAR) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

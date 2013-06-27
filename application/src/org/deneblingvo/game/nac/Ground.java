@@ -9,22 +9,22 @@ public class Ground {
 	};
 
 	public Cell getCell(Col col, Row row) {
-		return this.ground[(row.getId()+1)*3+(col.getId()+1)];
+		return this.getCell(new Position(col, row));
 	}
 
 	public Cell getCell(Position position) {
-		return this.getCell(position.getCol(), position.getRow());
+		return this.ground[position.getIndex()];
 	}
 
 	public void setCell(Col col, Row row, Cell cell) throws CellIsFull {
-		if (this.getCell(col, row) != Cell.CLEAR) {
-			throw new CellIsFull();
-		}
-		this.ground[(row.getId()+1)*3+(col.getId()+1)] = cell;
+		this.setCell(new Position(col, row), cell);
 	}
 
 	public void setCell(Position position, Cell cell) throws CellIsFull {
-		this.setCell(position.getCol(), position.getRow(), cell);
+		if (this.getCell(position) != Cell.CLEAR) {
+			throw new CellIsFull();
+		}
+		this.ground[position.getIndex()] = cell;
 	}
 
 }
